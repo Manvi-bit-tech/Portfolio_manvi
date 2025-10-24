@@ -635,6 +635,27 @@
     </footer>
 
     <!-- Custom JavaScript -->
+    <!-- Fallbacks: hide loading if JS errors or external scripts fail -->
+    <noscript>
+        <style>#loading{display:none !important;} </style>
+    </noscript>
+    <script>
+        // Defensive: if the main JS fails to run, ensure the loading screen disappears
+        (function(){
+            try {
+                var loadingEl = document.getElementById('loading');
+                if (!loadingEl) return;
+                // If not removed by the app within 3.5s, forcibly hide it.
+                setTimeout(function(){
+                    if (loadingEl && getComputedStyle(loadingEl).display !== 'none') {
+                        loadingEl.style.display = 'none';
+                    }
+                }, 3500);
+            } catch (e) {
+                // no-op
+            }
+        })();
+    </script>
     <script src="assets.js"></script>
 </body>
 </html>
