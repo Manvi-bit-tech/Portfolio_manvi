@@ -1,0 +1,9 @@
+[build]
+  # Publish the repository root (where index.html lives)
+  publish = "."
+  # No build command for a static site
+  command = ""
+
+[dev]
+  # Local dev server settings (optional)
+  port = 8888
